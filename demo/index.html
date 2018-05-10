@@ -43,6 +43,13 @@
 					required: "#newsletter:checked",
 					minlength: 2
 				},
+				file: {
+					required: false,
+					extension:"pdf,jpeg,png,jpg",
+					size:function(e){
+                      return e.files[0].size;
+                	}
+				},
 				agree: "required"
 			},
 			messages: {
@@ -60,6 +67,10 @@
 					required: "Please provide a password",
 					minlength: "Your password must be at least 5 characters long",
 					equalTo: "Please enter the same password as above"
+				},
+				file:{
+               		required: "File must be JPG, GIF or PNG, less than 500KB",
+               		size: "Size must be less then 500 KB"
 				},
 				email: "Please enter a valid email address",
 				agree: "Please accept our policy",
@@ -131,6 +142,10 @@
 			<p>
 				<label for="curl">URL (optional)</label>
 				<input id="curl" type="url" name="url">
+			</p>
+			<p>
+				<label for="curl">File (optional)</label>
+				<input id="file" type="file" name="file">
 			</p>
 			<p>
 				<label for="ccomment">Your comment (required)</label>
