@@ -8,6 +8,12 @@
 		// Remove punctuation
 		.replace( /[.(),;:!?%#$'\"_+=\/\-“”’]*/g, "" );
 	}
+	/*To check file size less than 500Kb*/
+	$.validator.addMethod( "size", function( value, element, params ) {
+        if(params < 500000){
+            return true;
+        }
+    }, $.validator.format( "Size must be less than 500 KB" ) );
 
 	$.validator.addMethod( "maxWords", function( value, element, params ) {
 		return this.optional( element ) || stripHtml( value ).match( /\b\w+\b/g ).length <= params;
